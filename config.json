@@ -1,0 +1,5 @@
+{
+	"cmakelists_dir": "example/",
+	"output_dir": "example/output/",
+	"instances_dir": "example/instances/"
+}
