@@ -1,0 +1,15 @@
+{
+	"datasets": [{"name": "knapsack", "select": "hard"}],
+	"experiments": [
+		{
+			"name": "Top Down",
+			"executable": "knapsack_dp",
+			"version": "top_down"
+		},
+		{
+			"name": "Bottom UP",
+			"executable": "knapsack_dp",
+			"version": "bottom_up"
+		}
+	]
+}

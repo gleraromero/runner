@@ -1,0 +1,125 @@
+[{
+	"instance_name": "f1_l-d_kp_10_269",
+	"solution": 295,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "f2_l-d_kp_20_878",
+	"solution": 1024,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "f3_l-d_kp_4_20",
+	"solution": 35,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "f4_l-d_kp_4_11",
+	"solution": 23,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "f5_l-d_kp_15_375",
+	"solution": 481,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "f6_l-d_kp_10_60",
+	"solution": 52,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "f7_l-d_kp_7_50",
+	"solution": 107,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "f8_l-d_kp_23_10000",
+	"solution": 9767,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "f9_l-d_kp_5_80",
+	"solution": 130,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "f10_l-d_kp_20_879",
+	"solution": 1025,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_1_100_1000_1",
+	"solution": 9147,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_1_200_1000_1",
+	"solution": 11238,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_1_500_1000_1",
+	"solution": 28857,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_1_1000_1000_1",
+	"solution": 54503,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_1_2000_1000_1",
+	"solution": 110625,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_1_5000_1000_1",
+	"solution": 276457,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_1_10000_1000_1",
+	"solution": 563647,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_2_100_1000_1",
+	"solution": 1514,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_2_200_1000_1",
+	"solution": 1634,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_2_500_1000_1",
+	"solution": 4566,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_2_1000_1000_1",
+	"solution": 9052,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_2_2000_1000_1",
+	"solution": 18051,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_2_5000_1000_1",
+	"solution": 44356,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_2_10000_1000_1",
+	"solution": 90204,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_3_100_1000_1",
+	"solution": 2397,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_3_200_1000_1",
+	"solution": 2697,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_3_500_1000_1",
+	"solution": 7117,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_3_1000_1000_1",
+	"solution": 14390,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_3_2000_1000_1",
+	"solution": 28919,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_3_5000_1000_1",
+	"solution": 72505,
+	"tags": ["Optimum"]
+}, {
+	"instance_name": "knapPI_3_10000_1000_1",
+	"solution": 146919,
+	"tags": ["Optimum"]
+}]

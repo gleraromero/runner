@@ -1,0 +1,19 @@
+{
+	"datasets": [{"name": "knapsack", "select": "easy"}],
+	"experiments": [
+		{
+			"name": "Top Down",
+			"executable": "knapsack_dp",
+			"version": "top_down"
+		},
+		{
+			"name": "Bottom UP",
+			"executable": "knapsack_dp",
+			"version": "bottom_up"
+		},
+		{
+			"name": "Backtracking",
+			"executable": "knapsack_bt"
+		}
+	]
+}
