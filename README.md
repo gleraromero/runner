@@ -34,7 +34,8 @@ To run python3 we need to specify the experiment files to execute:
 ```python3 runner.py <experiment_file1.json> [<experiment_file_2.json> ...]```
 
 Options:
-- --instances -I <instance1> [<instance2> ...]: only execute instances with the specified names (default: "*" -all-).
+- --instances -I <instance1> [<instance2> ...]: only execute instances with the specified names (default: all).
+- --exps -E <experiment_name1> [<experiment_name2> ...]: only execute experiment with the specified names (default: all).
 - --silent -S: do not print execution stderr (default: false).
 - --memlimit -M <limit_in_gb>: memory limit for each experiment execution (in GB). (default: 64).
 - --valgrind -V: execute experiments with valgrind (debug mode). (default: false).
