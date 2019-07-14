@@ -157,8 +157,8 @@ Example:
   "date": "10-05-2019",
   "experiment_file": "experiment_easy",
   "outputs": [
-    { "experiment_name": "preprocessing", "dataset_name": "dataset1", "instance_name": "easy_instance", exit_code: 0, stderr: "PREPROCESSING\nRUNNING\nFINISHED", stdout:"{\"solution\": [0, 1, 3, 5], \"value\": 500}"},
-    { "experiment_name": "preprocessing", "dataset_name": "dataset2", "instance_name": "hard_instance", exit_code: 6, stderr: "PREPROCESSING\nRUNNING", stdout:"", "error_message":"Out of memory (MAX=6GB)"}
+    { "experiment_name": "preprocessing", "dataset_name": "dataset1", "instance_name": "easy_instance", exit_code: 0, stderr: "PREPROCESSING\nRUNNING\nFINISHED", stdout:{"solution": [0, 1, 3, 5], "value": 500}},
+    { "experiment_name": "preprocessing", "dataset_name": "dataset2", "instance_name": "hard_instance", exit_code: 6, stderr: "PREPROCESSING\nRUNNING", stdout:""}
   ]
 }
 ```
