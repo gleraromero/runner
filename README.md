@@ -143,11 +143,9 @@ The JSON object that results from an execution will depend on the exit_code. It 
 - instance_name: name of the instance being used.
 - exit_code: the execution exit_code (0 means successful).
 - stderr: string of the STDERR output of the execution.
-- stdout: string of the STDOUT output of the execution. 
-- [error_message]: *(only if exit_code != 0)* it contains the error message of the execution.
+- stdout: JSON object returned in the STDOUT output of the execution.
 
-> Note: we consider exit_code 6 as memory limit reached. You should catch a bad_alloc exception (in C++) and return 6 in this case.
-
+> Note: if the output in the STDOUT is not a JSON object, then the *stdout* attribute will contain the raw string.
 > For every execution of an experiment on an instance, one output JSON will be added to the output file.
 
 Example:
