@@ -136,22 +136,29 @@ Example:
 In this example, two experiments will be executed, each one will execute the knapsack binary file, and has two extra parameters "time_limit" and "preprocess". They will be executed in all instances from *dataset1* and all instances from *dataset2* that either have the "EASY" tag in the **index.json** file or have the "HARD" tag but not the "RANDOM" tag.
 
 ## Output file
-Each time an executable file gets executed it returns 3 values: exit_code, stdout, stderr.
-The JSON object that results from an execution will depend on the exit_code. It will always include the following attributes:
-- experiment_name: name attribute of the current experiment.
-- dataset_name: name of the dataset being used.
-- instance_name: name of the instance being used.
-- exit_code: the execution exit_code (0 means successful).
-- stderr: string of the STDERR output of the execution.
-- stdout: JSON object returned in the STDOUT output of the execution.
+The output file contains a JSON object with information about the experiment executions. Each time an executable file gets executed it returns 3 values: exit_code, stdout, stderr.
+The JSON object that results from an execution includes the following attributes:
+- date: date when the experiment was started.
+- time: total time (secs) spent running the experiments from the experimentation file.
+- experiment_file: name of the experiment file executed.
+- outputs: JSON array of Object with the following attributes for each experiment execution on an instance
+  - experiment_name: name attribute of the current experiment.
+  - dataset_name: name of the dataset being used.
+  - instance_name: name of the instance being used.
+  - exit_code: the execution exit_code (0 means successful).
+  - stderr: string of the STDERR output of the execution.
+  - stdout: JSON object returned in the STDOUT output of the execution.
 
 > Note: if the output in the STDOUT is not a JSON object, then the *stdout* attribute will contain the raw string.
-> For every execution of an experiment on an instance, one output JSON will be added to the output file.
 
 Example:
 ```javascript
-[
-  { "experiment_name": "preprocessing", "dataset_name": "dataset1", "instance_name": "easy_instance", exit_code: 0, stderr: "PREPROCESSING\nRUNNING\nFINISHED", stdout:"{\"solution\": [0, 1, 3, 5], \"value\": 500}"},
-  { "experiment_name": "preprocessing", "dataset_name": "dataset2", "instance_name": "hard_instance", exit_code: 6, stderr: "PREPROCESSING\nRUNNING", stdout:"", "error_message":"Out of memory (MAX=6GB)"}
-]
+{
+  "date": "10-05-2019",
+  "experiment_file": "experiment_easy",
+  "outputs": [
+    { "experiment_name": "preprocessing", "dataset_name": "dataset1", "instance_name": "easy_instance", exit_code: 0, stderr: "PREPROCESSING\nRUNNING\nFINISHED", stdout:"{\"solution\": [0, 1, 3, 5], \"value\": 500}"},
+    { "experiment_name": "preprocessing", "dataset_name": "dataset2", "instance_name": "hard_instance", exit_code: 6, stderr: "PREPROCESSING\nRUNNING", stdout:"", "error_message":"Out of memory (MAX=6GB)"}
+  ]
+}
 ```
