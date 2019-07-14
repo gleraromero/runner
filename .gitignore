@@ -30,3 +30,22 @@
 *.exe
 *.out
 *.app
+
+# osX
+**/.DS_STORE
+
+# intellij
+**/.idea
+**/cmake-build-debug/
+**/cmake-build-release/
+**.plist
+
+# Ignore output files
+!output/.empty
+output/*
+
+# Ignore compiled files.
+**/obj/*
+
+# Ignore python execution files
+**/__pycache__
