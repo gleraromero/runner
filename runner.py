@@ -1,4 +1,4 @@
-import sys, os, json, datetime, os, argparse, resource, subprocess
+import sys, os, json, datetime, os, argparse, resource, subprocess, ntpath
 
 RUNNER_DIR = os.path.abspath(os.path.dirname(__file__)) # Directory where runner files are located.
 CURRENT_DIR = os.path.abspath(os.getcwd()) # Current directory in the command line.
@@ -185,11 +185,13 @@ def main():
 		experiment_file_json = json.loads(experiment_file.read())
 
 		# Outputs of the experiments will be stored in this object.
-		output = {"date": str(datetime.date.today()), "experiment_file": experiment_file.name, "outputs": []}
+		experiment_file_name = ntpath.basename(experiment_file.name.replace(".json", ""))
+		output = {"date": str(datetime.date.today()), "experiment_file": experiment_file_name, "outputs": []}
 
 		# Periodically, every TSave seconds the output will be saved to the output folder with the name "<date>-<experiment_file_name>.json".
 		TSave = 60
-		output_file_name = str(datetime.date.today()) + "-" + os.path.basename(experiment_file.name.replace(".json", "")) + ".json"
+		output_file_name = F"{datetime.date.today()}-{experiment_file_name}.json"
+		TInit = datetime.datetime.now() # TInit = "timestamp when the experimentation started".
 		TLast = datetime.datetime.now() # TLast = "last time the output was saved".
 
 		# For each instances specified in the experiment file.
@@ -211,9 +213,11 @@ def main():
 
 				# If TSave seconds have passed since TLast then save output.
 				if (datetime.datetime.now() - TLast).total_seconds() >= TSave:
+					output["time"] = (datetime.datetime.now() - TInit).total_seconds()
 					save_json_to_file(F"{OUTPUT_DIR}/{output_file_name}", output)
 
 		# Having finished all experiments from the experimentation_file, save the final output.
+		output["time"] = (datetime.datetime.now() - TInit).total_seconds()
 		save_json_to_file(F"{OUTPUT_DIR}/{output_file_name}", output)
 
 if __name__== "__main__":
