@@ -135,6 +135,9 @@ def run_experiment(experiment, instance, solutions):
 		soft, hard = resource.getrlimit(resource.RLIMIT_AS)
 		resource.setrlimit(resource.RLIMIT_AS, (memlimit_gb*1024*1024*1024, hard))
 
+	# Measure time.
+	t_start = datetime.datetime.now()
+
 	# Open process execution for executable and send STDIN.
 	process = subprocess.Popen(executable, stderr=subprocess.PIPE, stdout=subprocess.PIPE, stdin=subprocess.PIPE, preexec_fn=set_memory_limit, universal_newlines = True)
 	process.stdin.write(json.dumps(experiment)) # First input: the experiment.
@@ -152,6 +155,8 @@ def run_experiment(experiment, instance, solutions):
 				stderr_string += str(line)
 				print(line, end='')
 	exit_code = process.wait()
+
+	t_end = datetime.datetime.now()
 
 	# Read STDOUT and STDERR if silent.
 	stdout_string = process.stdout.read()
@@ -173,7 +178,8 @@ def run_experiment(experiment, instance, solutions):
 		"experiment_name":experiment["name"], 
 		"stderr": stderr_string, 
 		"stdout": stdout_json, 
-		"exit_code": exit_code
+		"exit_code": exit_code,
+		"time": (t_end - t_start).total_seconds()
 	}
 
 def main():

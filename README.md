@@ -153,6 +153,7 @@ The JSON object that results from an execution includes the following attributes
   - exit_code: the execution exit_code (0 means successful).
   - stderr: string of the STDERR output of the execution.
   - stdout: JSON object returned in the STDOUT output of the execution.
+  - time: execution time of the experiment process (in seconds).
 
 > Note: if the output in the STDOUT is not a JSON object, then the *stdout* attribute will contain the raw string.
 
@@ -162,8 +163,8 @@ Example:
   "date": "10-05-2019",
   "experiment_file": "experiment_easy",
   "outputs": [
-    { "experiment_name": "preprocessing", "dataset_name": "dataset1", "instance_name": "easy_instance", exit_code: 0, stderr: "PREPROCESSING\nRUNNING\nFINISHED", stdout:{"solution": [0, 1, 3, 5], "value": 500}},
-    { "experiment_name": "preprocessing", "dataset_name": "dataset2", "instance_name": "hard_instance", exit_code: 6, stderr: "PREPROCESSING\nRUNNING", stdout:""}
+    { "experiment_name": "preprocessing", "dataset_name": "dataset1", "instance_name": "easy_instance", exit_code: 0, stderr: "PREPROCESSING\nRUNNING\nFINISHED", stdout:{"solution": [0, 1, 3, 5], "value": 500}, "time": 500.12},
+    { "experiment_name": "preprocessing", "dataset_name": "dataset2", "instance_name": "hard_instance", exit_code: 6, stderr: "PREPROCESSING\nRUNNING", stdout:"", "time": 200.0}
   ]
 }
 ```
