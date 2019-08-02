@@ -204,9 +204,9 @@ def main():
 		for instance in instances_for_experiment_file(experiment_file_json):
 			# Get instance solutions from the dataset directory.
 			solutions = []
-			if os.path.isfile(F"{instance['dataset_name']}/solutions.json"):
-				solutions = read_json_from_file(F"{dataset_dir}/solutions.json")
-				solutions = [s for s in solutions if s["instance_name"] == instance_name]
+			if os.path.isfile(F"{INSTANCES_DIR}/{instance['dataset_name']}/solutions.json"):
+				solutions = read_json_from_file(F"{INSTANCES_DIR}/{instance['dataset_name']}/solutions.json")
+				solutions = [s for s in solutions if s["instance_name"] == instance["instance_name"]]
 
 			# For each experiment defined in the experiment file.
 			for experiment in experiment_file_json["experiments"]:
@@ -221,6 +221,7 @@ def main():
 				if (datetime.datetime.now() - TLast).total_seconds() >= TSave:
 					output["time"] = (datetime.datetime.now() - TInit).total_seconds()
 					save_json_to_file(F"{OUTPUT_DIR}/{output_file_name}", output)
+					TLast = datetime.datetime.now()
 
 		# Having finished all experiments from the experimentation_file, save the final output.
 		output["time"] = (datetime.datetime.now() - TInit).total_seconds()
