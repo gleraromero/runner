@@ -53,7 +53,7 @@ selected_instances = args["instances"]
 selected_experiments = args["exps"]
 use_callgrind = args["callgrind"]
 use_valgrind = args["valgrind"]
-memlimit_gb = args["memlimit"]
+memlimit_gb = float(args["memlimit"])
 silent = args["silent"]
 
 # The build type when running callgrind or valgrind is 'debug' otherwise it is 'release'.
@@ -143,27 +143,14 @@ def run_experiment(experiment, instance, solutions):
 	process.stdin.write(json.dumps(experiment)) # First input: the experiment.
 	process.stdin.write(json.dumps(instance))	# Second input: the instance.
 	process.stdin.write(json.dumps(solutions)) 	# Third input: the solutions.
-	process.stdin.flush()
-	process.stdin.close()
-
-	# Print the STDERR to screen if silent option is disabled.
-	stderr_string = ""
-	if not silent:
-		while process.poll() is None:
-			line = process.stderr.readline()
-			if line != "":
-				stderr_string += str(line)
-				print(line, end='')
+	(stdout_string, stderr_string) = process.communicate()
 	exit_code = process.wait()
-
-	t_end = datetime.datetime.now()
-
-	# Read STDOUT and STDERR if silent.
-	stdout_string = process.stdout.read()
-	if silent: stderr_string = process.stderr.read()
-	process.stdin.close()
 	process.stdout.close()
 	process.stderr.close()
+
+	if not silent: print(stderr_string)
+
+	t_end = datetime.datetime.now()
 
 	stdout_json = ""
 	try:
@@ -214,15 +201,15 @@ def main():
 				if selected_experiments != None and experiment["name"] not in selected_experiments: continue
 
 				# Run the experiment.
-				print("\n" + purple(F"[{instance['dataset_name']}] {instance['instance_name']} - {experiment['name']}"), flush=True)
+				print(purple(F"[{instance['dataset_name']}] {instance['instance_name']} - {experiment['name']} ({datetime.datetime.now()})"), flush=True)
 				output["outputs"].append(run_experiment(experiment, instance, solutions))
-
+				
 				# If TSave seconds have passed since TLast then save output.
 				if (datetime.datetime.now() - TLast).total_seconds() >= TSave:
 					output["time"] = (datetime.datetime.now() - TInit).total_seconds()
 					save_json_to_file(F"{OUTPUT_DIR}/{output_file_name}", output)
 					TLast = datetime.datetime.now()
-
+		
 		# Having finished all experiments from the experimentation_file, save the final output.
 		output["time"] = (datetime.datetime.now() - TInit).total_seconds()
 		save_json_to_file(F"{OUTPUT_DIR}/{output_file_name}", output)
